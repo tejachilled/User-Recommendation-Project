@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<package name="helloworld" extends="struts-default">
+
+		<action name="hello" class="com.mobile.rec.validate" method="execute">
+			<result name="success">/Display.jsp</result>
+		</action>
+
+		<action name="GetInfo" class="com.mobile.rec.Info" method="execute">
+			<result name="success">/Result.jsp</result>
+		</action>
+		<action name="download" class="com.mobile.rec.DownloadAction">
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+		<action name="Trim" class="com.mobile.rec.Trim">
+			<result name="success" >MainContent.jsp</result>
+			<result name="goback" >Result.jsp</result>
+		</action>
+
+	</package>
+</struts>
